@@ -71,6 +71,48 @@ public class RentalCarCalc
         return scanner.nextInt();
     }
 
+    public static void output(boolean ezpass, boolean gps, boolean roadside, int days, int age)
+    {
+        double total = 29.99;
+        double ezpassTotal;
+        double gpsTotal;
+        double roadsideTotal;
+        System.out.println("The basic car rental $29.99 per day.There is a 30% surcharge on the basic car rental\n" +
+                "for drivers under 25. All taxes have already been incorporated into the fees shown: ");
+
+        if (age < 25)
+        {
+            total = total + (total * .3);
+        }
+
+        total *= days;
+
+        if (ezpass)
+        {
+            ezpassTotal = 3.95 * days;
+            System.out.println("Ezpass Fees: " + ezpassTotal);
+            total += ezpassTotal;
+        }
+
+        if (gps)
+        {
+            gpsTotal = 2.95 * days;
+            System.out.println("Gps Fees: " + gpsTotal);
+            total += gpsTotal;
+
+        }
+
+        if (roadside)
+        {
+            roadsideTotal = 3.95 * days;
+            System.out.println("Roadside Fees: " + roadsideTotal);
+            total += roadsideTotal;
+        }
+
+        System.out.println("The total cost of the rental is : " + total);
+
+    }
+
     static void main()
     {
         String pickupDate;
@@ -78,7 +120,8 @@ public class RentalCarCalc
         boolean isEzpass;
         boolean isGps;
         boolean isRoadside;
-        String age;
+        int age;
+
 
         Scanner scanner = new Scanner(System.in);
 
@@ -88,7 +131,8 @@ public class RentalCarCalc
         isEzpass = ezpass(scanner);
         isGps = gps(scanner);
         isRoadside = roadside(scanner);
-
+        age = getAge(scanner);
+        output(isEzpass, isGps, isRoadside, numDays, age);
 
     }
 }
