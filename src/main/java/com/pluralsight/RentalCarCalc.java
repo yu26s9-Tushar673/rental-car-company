@@ -77,7 +77,7 @@ public class RentalCarCalc
         double ezpassTotal;
         double gpsTotal;
         double roadsideTotal;
-        System.out.println("The basic car rental $29.99 per day.There is a 30% surcharge on the basic car rental\n" +
+        System.out.println("The basic car rental $29.99 per day. There is a 30% surcharge on the basic car rental\n" +
                 "for drivers under 25. All taxes have already been incorporated into the fees shown: ");
 
         if (age < 25)
@@ -90,14 +90,16 @@ public class RentalCarCalc
         if (ezpass)
         {
             ezpassTotal = 3.95 * days;
-            System.out.println("Ezpass Fees: " + ezpassTotal);
+            System.out.printf("Ezpass Fees: %.2f", ezpassTotal);
+            System.out.println();
             total += ezpassTotal;
         }
 
         if (gps)
         {
             gpsTotal = 2.95 * days;
-            System.out.println("Gps Fees: " + gpsTotal);
+            System.out.printf("Gps Fees: %.2f", gpsTotal);
+            System.out.println();
             total += gpsTotal;
 
         }
@@ -105,7 +107,8 @@ public class RentalCarCalc
         if (roadside)
         {
             roadsideTotal = 3.95 * days;
-            System.out.println("Roadside Fees: " + roadsideTotal);
+            System.out.printf("Roadside Fees: %.2f", roadsideTotal);
+            System.out.println();
             total += roadsideTotal;
         }
 
@@ -133,6 +136,5 @@ public class RentalCarCalc
         isRoadside = roadside(scanner);
         age = getAge(scanner);
         output(isEzpass, isGps, isRoadside, numDays, age);
-
     }
 }
